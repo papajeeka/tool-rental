@@ -24,23 +24,87 @@ if (isset($_POST['add_tool'])) {
     } else {
         echo "Error: " . $conn->error;
     }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Add Equipment</title>
-    </head>
-    <body>
-        <h2>Add New Tools</h2>
-        <form method="POST">
-            <input type="text" name="name" placeholder="Tool Name" required>
-            <input type="text" name="description" placeholder="Description" required>
-            <input type="text" name="serial_number" placeholder="Serial Number" required>   
-            <input type="text" name="item_condition" placeholder="Condition" required>
-            <input type="number" name="quantity" placeholder="Quantity" required>
-            <button type="submit" name="add_tool">Add Tool</button>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+    <div class="bg-white shadow-lg rounded-2xl w-full max-w-md p-8">
+        
+        <!-- Header -->
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">
+            Add New Tool
+        </h2>
+
+        <!-- Form -->
+        <form method="POST" class="space-y-4">
+
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">
+                    Tool Name
+                </label>
+                <input type="text" name="name" required
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="e.g. Drill Machine">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">
+                    Description
+                </label>
+                <input type="text" name="description" required
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Brief description">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">
+                    Serial Number
+                </label>
+                <input type="text" name="serial_number" required
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="e.g. DRL-001">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">
+                    Condition
+                </label>
+                <select name="item_condition" required
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">Select condition</option>
+                    <option value="new">New</option>
+                    <option value="good">Good</option>
+                    <option value="fair">Fair</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">
+                    Quantity
+                </label>
+                <input type="number" name="quantity" required
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="e.g. 5">
+            </div>
+
+            <!-- Button -->
+            <button type="submit" name="add_tool"
+                class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition duration-200">
+                Add Tool
+            </button>
+
         </form>
-    </body>
-    </html>
+    </div>
+
+</body>
+</html>
             

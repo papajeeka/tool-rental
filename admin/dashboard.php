@@ -19,7 +19,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     <ul>
         <li><a href="manage_users.php">Manage Users</a></li>
         <li><a href="manage_tools.php">Manage Tools</a></li>
-        <li><a href="add_rentals.php">Add Rentals</a></li>
+        <li><a href="add_equipment.php">Add equipment</a></li>
         <li><a href="../logout.php">Logout</a></li>
 
     </ul>
