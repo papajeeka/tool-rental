@@ -50,37 +50,103 @@ if (isset($_POST['register'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Tool Rental</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center px-4">
 
-<div class="login-box">
-    <h2>Register</h2>
+    <div class="w-full max-w-md bg-white shadow-xl rounded-2xl p-8">
+        
+        <!-- Header -->
+        <div class="text-center mb-6">
+            <h2 class="text-2xl font-bold text-gray-800">Create Account</h2>
+            <p class="text-gray-500 text-sm mt-1">Register to access the tool rental platform</p>
+        </div>
 
-    <?php if ($message != "") { ?>
-        <p><?php echo $message; ?></p>
-    <?php } ?>
+        <!-- Message -->
+        <?php if ($message != "") { ?>
+            <div class="mb-4 rounded-lg px-4 py-3 text-sm font-medium
+                <?php echo strpos(strtolower($message), 'success') !== false 
+                    ? 'bg-green-100 text-green-700 border border-green-200' 
+                    : 'bg-red-100 text-red-700 border border-red-200'; ?>">
+                <?php echo $message; ?>
+            </div>
+        <?php } ?>
 
-    <form method="POST">
+        <!-- Form -->
+        <form method="POST" class="space-y-4">
 
-        <input type="text" name="full_name" placeholder="Full Name" required>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                <input 
+                    type="text" 
+                    name="full_name" 
+                    placeholder="Enter your full name" 
+                    required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                >
+            </div>
 
-        <input type="email" name="email" placeholder="Email Address" required>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                <input 
+                    type="email" 
+                    name="email" 
+                    placeholder="Enter your email address" 
+                    required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                >
+            </div>
 
-        <input type="text" name="username" placeholder="Username" required>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                <input 
+                    type="text" 
+                    name="username" 
+                    placeholder="Choose a username" 
+                    required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                >
+            </div>
 
-        <input type="password" name="password" placeholder="Password" required>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                <input 
+                    type="password" 
+                    name="password" 
+                    placeholder="Enter your password" 
+                    required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                >
+            </div>
 
-        <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+                <input 
+                    type="password" 
+                    name="confirm_password" 
+                    placeholder="Confirm your password" 
+                    required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                >
+            </div>
 
-        <button type="submit" name="register">Register</button>
+            <button 
+                type="submit" 
+                name="register"
+                class="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition duration-200 shadow-md"
+            >
+                Register
+            </button>
+        </form>
 
-    </form>
-
-    <p>Already have an account? <a href="index.php">Login here</a></p>
-
-</div>
+        <!-- Footer -->
+        <p class="text-center text-sm text-gray-500 mt-6">
+            Already have an account?
+            <a href="index.php" class="text-blue-600 font-medium hover:underline">Login here</a>
+        </p>
+    </div>
 
 </body>
 </html>

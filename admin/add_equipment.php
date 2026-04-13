@@ -9,15 +9,15 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 
 if (isset($_POST['add_tool'])) {
     $name = $_POST['name'];
-    $description = $_POST['description'];
+    $equipment_type = $_POST['equipment_type'];
     $serial_number = $_POST['serial_number'];
     $condition = $_POST['item_condition'];
     $quantity = $_POST['quantity'];
 
-    $sql = "INSERT INTO tools (name, description, serial_number, item_condition, quantity) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO tools (name, equipment_type, serial_number, item_condition, quantity) VALUES (?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssi", $name, $description, $serial_number, $condition, $quantity);
+    $stmt->bind_param("ssssi", $name, $equipment_type, $serial_number, $condition, $quantity);
 
     if ($stmt->execute()) {
         echo "Tool added successfully.";
@@ -58,9 +58,9 @@ if (isset($_POST['add_tool'])) {
 
             <div>
                 <label class="block text-sm font-medium text-gray-600 mb-1">
-                    Description
+                    Equipment Type
                 </label>
-                <input type="text" name="description" required
+                <input type="text" name="equipment_type" required
                     class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Brief description">
             </div>
