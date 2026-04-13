@@ -19,6 +19,7 @@
             </select>
 
             <button type="submit" name="login">Login</button>
+            <p>Don't have an account? <a href="register.php">Register</a> </p>
         </form>
     </div>
 </body>

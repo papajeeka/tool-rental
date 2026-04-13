@@ -22,10 +22,10 @@ if (isset($_GET['id'])) {
         $rent_date = date("y-m-d");
         $return_date = date("y-m-d", strtotime("+7 days"));
 
-        $insertSql = "INSERT INTO rentals (user_id, tool_id, rent_date, return_date) VALUES (?, ?, ?, ?, 'rented')";
+        $insertSql = "INSERT INTO rentals (users_id, equipment_id, rent_date, return_date, status) VALUES (?, ?, ?, ?, ?)";
         $insertStmt = $conn->prepare($insertSql);
-        $insertStmt->bind_param("iiss", $user_id, $tool_id, $rent_date, $return_date);
-
+        $insertStmt->bind_param("iisss", $user_id, $tool_id, $rent_date, $return_date, $status);
+        $status = 'rented';
         if ($insertStmt->execute()) {
             $updateSql = "UPDATE tools SET quantity = quantity - 1 WHERE id = ?";
             $updateStmt = $conn->prepare($updateSql);

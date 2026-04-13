@@ -11,8 +11,8 @@ $user_id = $_SESSION['user_id'];
 
 $sql = "SELECT rentals.*, tools.name 
         FROM rentals
-        JOIN tools ON rentals.tool_id = tools.id
-        WHERE rentals.user_id = ?";
+        JOIN tools ON rentals.equipment_id = tools.id
+        WHERE rentals.users_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
@@ -45,9 +45,9 @@ $result = $stmt->get_result();
                 <td><?php echo $row['return_date'] ? $row['return_date'] : 'Not returned'; ?></td>
                 <td><?php echo $row['status']; ?></td>
                 <td>
-                    <?php if ($row['status'] === 'rented'): ?>
-                        <a href="return_equipment.php?rental_id=<?php echo $row['id']; ?>&tool_id=<?php echo $row['tool_id']; ?>">Return</a>
-                    <?php else: { ?>
+                    <?php if ($row['status'] === 'rented') { ?>
+                        <a href="return_equipment.php?rental_id=<?php echo $row['id']; ?>&tool_id=<?php echo $row['equipment_id']; ?>">Return</a>
+                    <?php } else { ?>
                         completed
                     <?php } ?>
                 </td>

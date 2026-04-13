@@ -7,13 +7,14 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
     exit();
 }
 
+
 $search = "";
 if (isset($_GET['search'])) {
     $search = $_GET['search'];
-    $sql = "SELECT * FROM tools WHERE name LIKE ? OR description LIKE ?";
+    $sql = "SELECT * FROM tools WHERE name LIKE ?";
     $stmt = $conn->prepare($sql);
     $searchTerm = "%$search%";
-    $stmt->bind_param("ss", $searchTerm, $searchTerm);
+    $stmt->bind_param("s", $searchTerm);
     $stmt->execute();
     $result = $stmt->get_result();
 } else {
@@ -45,12 +46,12 @@ if (isset($_GET['search'])) {
         <?php while ($row = $result->fetch_assoc()) { ?>
         <tr>
             <td><?php echo $row['name']; ?></td>
-            <td><?php echo $row['description']; ?></td>
+            <td><?php echo $row['serial_number']; ?></td>
             <td><?php echo $row['item_condition']; ?></td>
             <td><?php echo $row['quantity']; ?></td>
             <td>
                 <?php if ($row['quantity'] > 0) { ?>
-                    <a href="rent_tool.php?id=<?php echo $row['id']; ?>">Rent</a>
+                    <a href="rent_equipment.php?id=<?php echo $row['id']; ?>">Rent</a>
                 <?php } else {?>
                     Out of Stock
                 <?php } ?>
