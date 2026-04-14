@@ -71,10 +71,13 @@ $result = $conn->query("SELECT * FROM tools");
                                     <?php echo ucfirst($row['item_condition']); ?>
                                 </span>
                             </td>
-                            <td class="px-6 py-4">
-                                <?php echo $row['quantity']; ?>
-                            </td>
-                            <td class="px-6 py-4">
+                            <td class="px-6 py-4 space-x-2">
+                                <!-- EDIT BUTTON -->
+                                 <a href="edit_tool.php?id=<?php echo $row['id']; ?>"
+                                 class="bg-yellow-500 text-white px-3 py-1 rounded-lg text-sm hover:bg-yellow-600">
+                                 Edit
+                                    </a>
+                                    <!-- DELETE BUTTON -->
                                 <a href="delete_tool.php?id=<?php echo $row['id']; ?>"
                                    class="inline-block bg-red-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-red-600 transition"
                                    onclick="return confirm('Are you sure you want to delete this tool?');">
